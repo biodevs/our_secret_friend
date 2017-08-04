@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 20170803020652) do
     t.text     "description"
     t.integer  "user_id"
     t.integer  "status"
+    t.datetime "event_date"
+    t.string   "event_hour"
+    t.string   "location"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["user_id"], name: "index_campaigns_on_user_id", using: :btree
