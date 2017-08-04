@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20170803020652) do
 
   create_table "members", force: :cascade do |t|
     t.string   "name"
-    t.string   "emaik"
+    t.string   "email"
     t.integer  "campaign_id"
     t.boolean  "open"
     t.string   "token"
