@@ -11,7 +11,7 @@ class Campaign < ApplicationRecord
   end
   
   def set_member
-    self.members << Member.create(name: self.user.name, self.user.email)
+    self.members << Member.create(name: self.user.name, email: self.user.email)
   end
   
 end
