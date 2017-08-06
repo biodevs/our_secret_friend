@@ -2,7 +2,7 @@ class Member < ApplicationRecord
   belongs_to :campaign
   after_destroy :set_campaign_pending
   validates :name, :email, presence: true
-  
+  validates :email, uniqueness: true
   def set_pixel
     self.open = false
     self.token = loop do
