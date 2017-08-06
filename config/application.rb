@@ -12,5 +12,10 @@ module OurSecretFriend
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.active_job.queue_adapter = :sidekiq
+    
+    config.time_zone = 'Brasilia'
+    config.encoding = "UTF-8"
+    config.i18n.default_locale = 'pt-BR'
+        
   end
 end
