@@ -121,9 +121,9 @@ pt-BR:
   # Active Record
   activerecord:
     models:
-      campaign:
-      member:
-      user:
+      campaign: Campanha
+      member: Membro
+      user: Usuário
     attributes:
       user:
         name: Nome
@@ -143,7 +143,9 @@ pt-BR:
           one: "Não pôde ser salvo: 1 erro"
           other: "Não pôde ser salvo: %{count} erros."
         body: "Por favor, cheque os seguintes campos:"
+      format: "%{attribute} %{message}"
       messages:
+        record_invalid: "A validação falhou: %{errors}"
         inclusion: "não está incluso na lista"
         exclusion: "{{attribute}} não está disponível"
         uniqueness: "já está sendo utilizado."
