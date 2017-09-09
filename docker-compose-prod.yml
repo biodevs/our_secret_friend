@@ -1,44 +1,53 @@
-version: '2'
+version: "2"
 
 services:
   postgres:
-    image: 'postgres:9.5'
+    image: "postgres:9.5"
     volumes:
-      - 'postgres:/var/lib/postgresql/data'
+      - "postgres:/var/lib/postgresql/data"
 
   redis:
-    image: 'redis:3.2-alpine'
+    image: "redis:3.2-alpine"
     command: redis-server
     ports:
-      - '6379:6379'
+      - "6379:6379"
     volumes:
-      - 'redis:/var/lib/redis/data'
+      - "redis:/var/lib/redis/data"
 
   jobs:
     depends_on:
-      - 'postgres'
-      - 'redis'
-      - 'app'
+      - "postgres"
+      - "redis"
+      - "app"
     build: .
-    command: bash start_jobs
+    command: bash start_jobs.sh
     volumes_from:
       - box
     env_file:
-      - '.env-prod'
+      - ".env-prod"
 
   app:
     depends_on:
-      - 'postgres'
-      - 'redis'
+      - "postgres"
+      - "redis"
     build: .
-    command: bash start
+    command: bash start.sh
     ports:
-      - '3000:3000'
+      - "3000:3000"
     volumes_from:
     - box
     env_file:
-    - '.env-prod'
+    - ".env-prod"
 
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx
+    links:
+      - app
+    ports:
+      - "81:81"
+      
   box:
     image: busybox
     volumes:
