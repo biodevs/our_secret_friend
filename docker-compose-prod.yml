@@ -46,7 +46,7 @@ services:
     links:
       - app
     ports:
-      - "81:81"
+      - "80:80"
       
   box:
     image: busybox
